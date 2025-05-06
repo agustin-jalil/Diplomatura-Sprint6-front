@@ -1,0 +1,42 @@
+.video-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    z-index: 0; /* 👈 clave para que el contenido con z-index 2 lo sobrepase */
+  }
+  
+  .video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    object-fit: cover;
+    filter: brightness(0.5);
+  }
+  
+  .video-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    color: white;
+  }
+  
+  .lista-superheroes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100%;
+    width: 90%;
+    text-align: center;
+    z-index: 2;
+    overflow: auto;
+    margin: 0 auto;
+  }
+

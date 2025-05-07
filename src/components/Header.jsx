@@ -13,7 +13,7 @@ export default function Navbar() {
   return (
     <nav className="w-full text-white h-20 bg-black">
       <div
-        className="flex justify-between items-center h-full gap-4 max-w-7xl mx-auto px-4"
+        className="flex justify-between items-center h-full gap-4 max-w-7xl mx-auto"
         style={{ alignItems: 'center' }} // Corrected this
       >
         <img src="/batman.svg" width="48px" alt="Logo" />

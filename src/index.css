@@ -1,10 +1,5 @@
 @import "tailwindcss";
-
-
-.creatorlist{
-    width: 50vw !important;
-    margin: 0 auto;
-}
+@import "./superHeroes.css";
 
 .creatorslista-grid {
     display: grid;
@@ -24,7 +19,7 @@
   
   @media (min-width: 1024px) { /* lg */
     .creatorslista-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
   

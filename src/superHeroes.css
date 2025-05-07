@@ -1,0 +1,93 @@
+.lista-superheroes-input{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333;
+    background-color: rgba(27, 27, 27, 0.603) !important;
+    color: white !important;
+    transition: 0.3s ease border-color, 0.3s ease box-shadow;
+}
+
+ .lista-superheroes-input:focus{
+    outline: none;
+    border-color: black; /* gris más claro */
+    box-shadow: 0 0 2px 0 goldenrod; /* sombra de enfoque */
+}
+
+.superheroes-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    width: 100%;
+  }
+
+
+@media (max-width: 1439.98px) { /* sm */
+    .superheroes-list {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+  
+  .superheroes-list__card {
+    background-color: rgba(27, 27, 27, 0.603) !important;
+    color: white !important;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .superheroes-list__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .superheroes-list__content {
+    padding: 1rem;
+    color: #fff;
+  }
+  
+  .superheroes-list__title {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .superheroes-list__subtitle {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #a0aec0;
+  }
+  
+  .superheroes-list__description {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .superheroes-list__button {
+    background-color: #2e2e2e; /* gris oscuro elegante */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .superheroes-list__button:hover {
+    background-color: #1f1f1f; /* tono un poco más oscuro para el hover */
+  }
+  
+  .superheroes-list__empty {
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+  

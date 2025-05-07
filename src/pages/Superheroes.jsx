@@ -7,7 +7,7 @@ import Header from '../components/Header';
 export default function Superheroes() {
   const [filter, setFilter] = useState('');  // El estado de búsqueda
   const [currentPage, setCurrentPage] = useState(1); // Página actual
-  const heroesPerPage = 3; // Héroes por página
+  const heroesPerPage = 6; // Héroes por página
 
   const heroes = [
     { _id: '1', name: 'Spider-Man', alterEgo: 'Peter Parker', description: 'Agility, Wall Crawling, Spidey Sense' },
@@ -49,43 +49,33 @@ export default function Superheroes() {
           placeholder="Buscar superhéroe..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="p-2 mb-5 bg-white w-full max-w-md mx-auto border-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          style={{
-            borderRadius:"10px",
-          }}  
+          className="lista-superheroes-input"
         />
 
-        {/* Lista de superhéroes */}
-        <div className="grid gap-4 lista-superheroe__cards">
+        <div className="superheroes-list">
           {currentHeroes.map(h => (
-            <div key={h._id} className="col-12 md:col-6 lg:col-3">
+            <div key={h._id} className="superheroes-list__card">
               <img 
-                src={`https://cdn.pixabay.com/photo/2023/02/13/02/34/spiderman-7786392_1280.jpg`} 
-                alt={h.name} 
-                className="object-cover rounded-t-md"
-                style={{height:'auto', width:'500px', borderRadius:' 10px 10px 0px 0px'}}
+                src="https://cdn.pixabay.com/photo/2023/02/13/02/34/spiderman-7786392_1280.jpg"
+                alt={h.name}
+                className="superheroes-list__image"
               />
-              <Card
-                title={h.name}
-                subTitle={`Alter Ego: ${h.alterEgo}`}
-                className="p-shadow-2 p-mb-3 backgroundcards"
-              >
-                <p className="m-0 mt-4">{h.description}</p>
-                <footer>
-                  <Button 
-                    label="Ver más" 
-                    className="bg-blue-500 text-white hover:bg-blue-600 rounded-lg px-4 py-2 mt-3 transition-all duration-300 transform hover:scale-105"
-                  />
-                </footer>
-              </Card>
+              <div className="superheroes-list__content">
+                <h3 className="superheroes-list__title">{h.name}</h3>
+                <h4 className="superheroes-list__subtitle">Alter Ego: {h.alterEgo}</h4>
+                <p className="superheroes-list__description">{h.description}</p>
+                <button className="superheroes-list__button">
+                  Ver más
+                </button>
+              </div>
             </div>
           ))}
 
-          {/* Mensaje si no hay resultados */}
           {filteredHeroes.length === 0 && (
-            <p className="text-white">No se encontraron superhéroes.</p>
+            <p className="superheroes-list__empty">No se encontraron superhéroes.</p>
           )}
         </div>
+
 
         {/* Paginación */}
         <div className="flex justify-center mt-6">

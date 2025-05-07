@@ -26,17 +26,17 @@ export default function Login() {
   };
 
   return (
-        <div className="flex justify-content-center mt-6">
+        <div className="flex justify-content-center mt-6 ">
         <Toast ref={toast} />
-        <Card title="Iniciar Sesión" className="w-4 p-6 gap-4">
+        <Card title="Iniciar Sesión" className="w-4 p-6 gap-4 backgroundcards">
             <form onSubmit={handleSubmit} className="p-fluid">
-            <div className="field mb-3">
+            <div className="field mb-3 flex flex-column ">
                 <label htmlFor="email">Email</label>
-                <InputText id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input className='border-white-custom p-2' id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
-            <div className="field mb-4">
+            <div className="field mb-4 flex flex-column ">
                 <label htmlFor="password">Contraseña</label>
-                <Password id="password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask required />
+                <input className='border-white-custom p-2' id="password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask required />
             </div>
             <Button label="Iniciar Sesión" icon="pi pi-sign-in" type="submit" />
             </form>

@@ -4,7 +4,6 @@ const CreatorsList = () => {
   const [creators, setCreators] = useState([]);
 
   useEffect(() => {
-    // Simulamos una llamada a una API con datos mock
     const mockCreators = [
       {
         _id: "1",
@@ -43,36 +42,33 @@ const CreatorsList = () => {
       },
     ];
 
-    // Simula un delay como si fuera una API real
     setTimeout(() => {
       setCreators(mockCreators);
     }, 500);
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 creatorlist">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold text-center text-white pt-4 mb-6">
-          Creators
-        </h1>
+    <div className="creadores container-general">
+      <div className="creadores__container">
+        <h1 className="creadores__title">Creadores</h1>
 
         {creators.length === 0 ? (
-          <p className="text-center text-gray-600">Loading creators...</p>
+          <p className="creadores__loading">Cargando creadores...</p>
         ) : (
-          <div className="creatorslista-grid">
+          <div className="creadores__grid">
             {creators.map((creator) => (
-              <div
-                key={creator._id}
-                className="creator-card p-4 rounded-2xl shadow-md hover:shadow-lg transition mx-auto w-full"
-              >
-                <h2 className="text-xl font-semibold text-white-900">
-                  {creator.name}
-                </h2>
-                <p className="text-white-700">Email: {creator.email}</p>
-                <p className="text-white-600">Company: {creator.company}</p>
-                <p className="text-white-500">
-                  Experience: {creator.yearsOfExperience} years
+              <div key={creator._id} className="creadores__card">
+                <h2 className="creadores__name">{creator.name}</h2>
+                <p className="creadores__info">Email: {creator.email}</p>
+                <p className="creadores__info">Empresa: {creator.company}</p>
+                <p className="creadores__info">
+                  Experiencia: {creator.yearsOfExperience} años
                 </p>
+                <div className="creadores__botones">
+                  <button className="creadores__boton--crear" title="Crear">➕</button>
+                  <button className="creadores__boton--editar" title="Editar">✏️</button>
+                  <button className="creadores__boton--eliminar" title="Eliminar">🗑️</button>
+                </div>
               </div>
             ))}
           </div>

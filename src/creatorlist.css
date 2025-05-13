@@ -1,0 +1,110 @@
+.creadores {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 0px;
+  width: 100%;
+  
+}
+
+.creadores__container {
+  width: 100%;
+}
+
+.creadores__title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.creadores__loading {
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+}
+
+.creadores__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.creadores__card {
+  background-color: #222;
+  color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creadores__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.creadores__name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.creadores__info {
+  font-size: 0.95rem;
+  color: #ddd;
+  margin-bottom: 0.3rem;
+}
+
+.creadores__botones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.creadores__boton--crear,
+.creadores__boton--editar,
+.creadores__boton--eliminar {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Crear */
+.creadores__boton--crear {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+.creadores__boton--crear:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Editar */
+.creadores__boton--editar {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+.creadores__boton--editar:hover {
+  background-color: #1976d2;
+  transform: scale(1.05);
+}
+
+/* Eliminar */
+.creadores__boton--eliminar {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+.creadores__boton--eliminar:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}

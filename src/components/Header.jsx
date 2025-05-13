@@ -8,6 +8,7 @@ export default function Navbar() {
     { label: 'Registro', path: '/register' },
     { label: 'Login', path: '/login' },
     { label: 'Creadores', path: '/creators' },
+    { label: 'Superheroe', path: '/superheroe' },
   ];
 
   return (

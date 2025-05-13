@@ -41,7 +41,7 @@ export default function Superheroes() {
 
   return (
     // <VideoBackground>
-      <div className="lista-superheroes p-2">
+      <div className="lista-superheroes container-general py-2">
         <Header />
         <br />
         <input

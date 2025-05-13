@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @import "./superHeroes.css";
+@import "./superheroeid.css";
+@import "./login.css";
+@import "./creatorlist.css";
+@import "./registro.css";
 
 .creatorslista-grid {
     display: grid;
@@ -61,4 +65,10 @@
   /* For Firefox */
   * {
     scrollbar-width: none; /* Firefox */
+  }
+
+
+  .container-general{
+    max-width: 1440px;
+    margin: 0 auto;
   }

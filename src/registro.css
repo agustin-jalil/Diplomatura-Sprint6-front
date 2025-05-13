@@ -1,0 +1,81 @@
+.registrarse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.registrarse__card {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.registrarse__title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.registrarse__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.registrarse__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.registrarse__label {
+  margin-bottom: 0.4rem;
+}
+
+.registrarse__input {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 4px;
+  background: #2c2c2c;
+  color: white;
+}
+
+.registrarse__button {
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registrarse__button:hover {
+  background-color: #0056b3;
+}
+
+.registrarse__toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #444;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  display: none;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.registrarse__toast--success {
+  background-color: #28a745;
+}
+
+.registrarse__toast--error {
+  background-color: #dc3545;
+}

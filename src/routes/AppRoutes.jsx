@@ -3,6 +3,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Superheroes from '../pages/Superheroes';
 import CreatorsList from '../pages/Creators';
+import { SuperHeroe } from '../pages/SuperHeroeId';
 
 
 export default function AppRoutes() {
@@ -12,6 +13,7 @@ export default function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/creators" element={<CreatorsList />} />
+      <Route path="/superheroe" element={<SuperHeroe />} />
     </Routes>
   );
 }

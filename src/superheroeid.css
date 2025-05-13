@@ -1,0 +1,89 @@
+.container-superhero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.contenedores-flex{
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.container-superhero-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container-superhero-buttons h1 {
+    font-size: clamp(1.5rem, 2vw + 1rem, 4rem);
+    font-weight: bolder;
+    color: #fff;
+}
+
+.superhero-image{
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.superhero-info {
+    min-height: 300px;
+    flex: 1;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.superhero-name{
+    font-size: clamp(1.5rem, 2vw + 1rem, 4rem);
+    font-weight: bolder;
+    color: #fff;
+}
+
+.superhero-description{
+    font-size: clamp(1rem, 2vw + 1rem, 2rem);
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.superhero-creador{
+    font-size: clamp(1rem, 2vw + 1rem, 2rem);
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.superhero__buttons--crear,
+.superhero__buttons--editar,
+.superhero__buttons--eliminar
+{
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: large;
+    font-weight: bolder;
+    color: #fff;
+    background-color: #2e2e2e;
+    min-width: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.superhero__buttons--crear:hover {
+    background-color: #218838;
+}
+.superhero__buttons--editar:hover {
+    background-color: #e0a800;
+}
+.superhero__buttons--eliminar:hover {
+    background-color: #c82333;
+}

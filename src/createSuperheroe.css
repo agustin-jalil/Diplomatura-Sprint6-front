@@ -1,0 +1,146 @@
+.crearsuperheroe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.crearsuperheroe__card {
+  background: #1e1e1e;
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.crearsuperheroe__title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.crearsuperheroe__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.crearsuperheroe__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.crearsuperheroe__label {
+  margin-bottom: 0.4rem;
+}
+
+.crearsuperheroe__input {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 4px;
+  background: #2c2c2c;
+  color: white;
+}
+
+.crearsuperheroe__input--textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.crearsuperheroe__file-label {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.3s;
+  text-align: center;
+  width: fit-content;
+}
+
+.crearsuperheroe__file-label:hover {
+  background-color: #0056b3;
+}
+
+.crearsuperheroe__file-input {
+  display: none;
+}
+
+.crearsuperheroe__file-name {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.crearsuperheroe__button {
+  padding: 0.6rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.crearsuperheroe__button--primary {
+  background-color: #28a745;
+  color: white;
+}
+
+.crearsuperheroe__button--primary:hover {
+  background-color: #218838;
+}
+
+.crearsuperheroe__button--secondary {
+  background-color: #dc3545;
+  color: white;
+}
+
+.crearsuperheroe__button--secondary:hover {
+  background-color: #c82333;
+}
+
+.crearsuperheroe__button--link {
+  background: transparent;
+  color: #00bfff;
+  text-decoration: none;
+  border: none;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.crearsuperheroe__button--link:hover {
+  color: #1e90ff;
+}
+
+.crearsuperheroe__toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #444;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  display: none;
+  z-index: 1000;
+  font-weight: bold;
+}
+
+.crearsuperheroe__toast--success {
+  background-color: #28a745;
+}
+
+.crearsuperheroe__toast--error {
+  background-color: #dc3545;
+}
+
+.crearsuperheroe__toast--info {
+  background-color: #17a2b8;
+}

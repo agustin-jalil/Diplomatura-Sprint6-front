@@ -4,6 +4,7 @@ import Register from '../pages/Register';
 import Superheroes from '../pages/Superheroes';
 import CreatorsList from '../pages/Creators';
 import { SuperHeroe } from '../pages/SuperHeroeId';
+import CreateSuperheroe from '../pages/CreateSuperhereo';
 
 
 export default function AppRoutes() {
@@ -14,6 +15,7 @@ export default function AppRoutes() {
       <Route path="/register" element={<Register />} />
       <Route path="/creators" element={<CreatorsList />} />
       <Route path="/superheroe" element={<SuperHeroe />} />
+      <Route path="/crearsuperheroe" element={<CreateSuperheroe />} />
     </Routes>
   );
 }

@@ -14,7 +14,7 @@ export default function Login() {
       const res = await API.post('/auth/login', { username, password });
       localStorage.setItem('token', res.data.token);
       showToast('success', 'Login exitoso', 'Bienvenido');
-      setTimeout(() => navigate('/superheroes'), 1500);
+      setTimeout(() => navigate('/'), 1500);
     } catch (err) {
       showToast('error', 'Error', 'Credenciales inválidas');
     }
@@ -73,11 +73,6 @@ export default function Login() {
             ¿No tenés cuenta? Registrate
           </button>
         </form>
-        {localStorage.getItem('token') && (
-          <button onClick={handleLogout} className="login__button login__button--secondary">
-            Cerrar sesión
-          </button>
-        )}
       </div>
     </div>
   );

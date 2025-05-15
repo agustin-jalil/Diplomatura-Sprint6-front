@@ -73,3 +73,18 @@
     max-width: 1440px;
     margin: 0 auto;
   }
+
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 100%;
+    padding: 10px 0px;
+  }
+
+  .navbar-centro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

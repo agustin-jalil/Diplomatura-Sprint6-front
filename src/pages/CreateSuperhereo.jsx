@@ -1,14 +1,15 @@
 import { useState, useRef } from 'react';
-import API from '../api/axios';
+import { useSuperheroes } from '../context/SuperHeroContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function CreateSuperheroe() {
   const [name, setName] = useState('');
-  const [abilities, setAbilities] = useState('');
-  const [image, setImage] = useState(null);
-  const [imageName, setImageName] = useState('Ningún archivo seleccionado');
+  const [power, setPower] = useState('');
+  const [image, setImage] = useState('');
   const toastRef = useRef(null);
   const navigate = useNavigate();
+
+  const { createSuperhero } = useSuperheroes();
 
   const showToast = (type, title, message) => {
     if (!toastRef.current) return;
@@ -21,34 +22,26 @@ export default function CreateSuperheroe() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!image) {
-      showToast('error', 'Error', 'Debes subir una imagen');
+    if (!image.startsWith('http')) {
+      showToast('error', 'Error', 'La URL de la imagen no es válida');
       return;
     }
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('abilities', abilities);
-    formData.append('image', image);
+    const superheroData = {
+      name,
+      power,
+      image,
+    };
 
     try {
-      await API.post('/superheroes', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      });
+      const token = localStorage.getItem('token');
+      console.log("Enviando superhéroe:", superheroData);
+      await createSuperhero(superheroData, token);
       showToast('success', 'Superhéroe creado', 'Se agregó correctamente');
-      setTimeout(() => navigate('/superheroes'), 2000);
+      setTimeout(() => navigate('/'), 2000);
     } catch (err) {
       showToast('error', 'Error', 'No se pudo crear el superhéroe');
     }
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-    setImageName(file ? file.name : 'Ningún archivo seleccionado');
   };
 
   return (
@@ -70,29 +63,27 @@ export default function CreateSuperheroe() {
           </div>
 
           <div className="crearsuperheroe__field">
-            <label htmlFor="abilities" className="crearsuperheroe__label">Habilidades</label>
+            <label htmlFor="power" className="crearsuperheroe__label">Poder</label>
             <textarea
-              id="abilities"
+              id="power"
               className="crearsuperheroe__input crearsuperheroe__input--textarea"
               rows="3"
-              value={abilities}
-              onChange={(e) => setAbilities(e.target.value)}
+              value={power}
+              onChange={(e) => setPower(e.target.value)}
               required
             />
           </div>
 
           <div className="crearsuperheroe__field">
-            <label className="crearsuperheroe__label">Foto</label>
-            <label className="crearsuperheroe__file-label">
-              Subir imagen
-              <input
-                type="file"
-                accept="image/*"
-                className="crearsuperheroe__file-input"
-                onChange={handleImageChange}
-              />
-            </label>
-            <span className="crearsuperheroe__file-name">{imageName}</span>
+            <label htmlFor="image" className="crearsuperheroe__label">URL de imagen</label>
+            <input
+              id="image"
+              type="text"
+              className="crearsuperheroe__input"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              required
+            />
           </div>
 
           <button type="submit" className="crearsuperheroe__button crearsuperheroe__button--primary">

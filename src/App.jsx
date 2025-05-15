@@ -1,21 +1,18 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
-// import { AuthProvider } from './context/AuthContest';
-// import { CreatorProvider } from './context/CreatorContext';
-// import { SuperheroProvider } from './context/SuperHeroContext';
+import { SuperheroProvider } from './context/SuperHeroContext'; // Importar el proveedor del contexto
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
-    // <AuthProvider> 
-    //   <CreatorProvider> 
-    //     <SuperheroProvider> 
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-    //     </SuperheroProvider>
-    //   </CreatorProvider>
-    // </AuthProvider>
+    <AuthProvider>
+      <SuperheroProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </SuperheroProvider>
+    </AuthProvider>
   );
 }
 

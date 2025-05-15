@@ -70,7 +70,6 @@ export default function Superheroes() {
         )}
       </div>
 
-      {/* Paginación */}
       <div className="flex justify-center mt-6">
         <ul className="flex gap-2">
           {pageNumbers.map(number => (

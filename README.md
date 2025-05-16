@@ -1,12 +1,31 @@
-# React + Vite
+# 🦸‍♂️ Proyecto Final - Diplomatura Full Stack (Sprint 6 - Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio corresponde a la **parte frontend del Sprint 6** del proyecto final desarrollado durante la **Diplomatura en Desarrollo Full Stack**.  
+La aplicación consiste en una plataforma de gestión de superhéroes, donde usuarios autenticados pueden crear, editar, eliminar y visualizar superhéroes.
 
-Currently, two official plugins are available:
+🌐 **URL del proyecto desplegado:**  
+👉 https://diplomatura-sprint-6-agustinjalil.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://reactjs.org/) – Biblioteca principal para construir la interfaz.
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Tailwind CSS](https://tailwindcss.com/) – Framework de utilidad para estilos rápidos y responsivos.
+- [Vite](https://vitejs.dev/) – Herramienta de construcción para desarrollo rápido.
+- [React Router DOM](https://reactrouter.com/) – Para navegación entre vistas.
+- [Context API](https://reactjs.org/docs/context.html) – Para manejar la autenticación y el estado global.
+
+---
+
+## ✨ Funcionalidades principales
+
+- Registro e inicio de sesión de usuarios.
+- Diferenciación de roles (usuarios normales y administradores).
+- Creación, visualización, edición y eliminación de superhéroes.
+- Autenticación con tokens (JWT).
+- Estilos modernos y adaptativos con Tailwind + CSS personalizado.
+- Manejo de rutas protegidas para usuarios autenticados.
+

@@ -57,7 +57,8 @@
     margin-bottom: 1rem;
 }
 
-.superhero-creador{
+.superhero-creador,
+.superhero-description{
     font-size: clamp(1rem, 2vw + 1rem, 2rem);
     color: #fff;
     margin-bottom: 1rem;

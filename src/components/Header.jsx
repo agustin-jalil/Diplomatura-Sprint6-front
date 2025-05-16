@@ -15,7 +15,7 @@ export default function Navbar() {
     <nav className="navbar text-white h-20">
       <div className="navbar-centro gap-4">
         <img src="/batman.svg" width="48px" alt="Logo" />
-        <ul className="flex gap-6 font-semibold navbar-centro">
+        <ul className="flex gap-4 font-semibold navbar-centro">
           {menuItems.map((item) => (
             <li
               key={item.label}

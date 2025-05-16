@@ -71,8 +71,14 @@
 
 
   .container-general{
-    max-width: 1440px;
+    width: 75%;
     margin: 0 auto;
+  }
+
+  @media (max-width: 1023.98px) {
+    .container-general {
+      width: 100%;
+    }
   }
 
   .navbar{

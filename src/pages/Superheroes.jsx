@@ -57,8 +57,6 @@ export default function Superheroes() {
               />
               <div className="superheroes-list__content">
                 <h3 className="superheroes-list__title">{h.name}</h3>
-                <h4 className="superheroes-list__subtitle">Alter Ego: {h.alterEgo}</h4>
-                <p className="superheroes-list__description">{h.description}</p>
                 <Link to={`/superheroes/${h._id}`}>
                   <button className="superheroes-list__button">Ver más</button>
                 </Link>

@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import API from '../api/axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; // 👈 Importar el hook del contexto
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -8,11 +8,13 @@ export default function Login() {
   const toastRef = useRef(null);
   const navigate = useNavigate();
 
+  const { login, logout } = useAuth(); // 👈 Usar login y logout desde el contexto
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const res = await API.post('/auth/login', { username, password });
-      localStorage.setItem('token', res.data.token);
+      await login({ username, password }); // 👈 Llama al login del contexto
       showToast('success', 'Login exitoso', 'Bienvenido');
       setTimeout(() => navigate('/'), 1500);
     } catch (err) {
@@ -20,11 +22,6 @@ export default function Login() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    showToast('info', 'Sesión cerrada', 'Has cerrado sesión');
-    navigate('/login');
-  };
 
   const showToast = (type, title, message) => {
     if (!toastRef.current) return;
@@ -72,6 +69,7 @@ export default function Login() {
           >
             ¿No tenés cuenta? Registrate
           </button>
+          <a href="/">Volver al Home</a>
         </form>
       </div>
     </div>

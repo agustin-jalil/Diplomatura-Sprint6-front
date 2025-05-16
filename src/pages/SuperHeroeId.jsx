@@ -1,22 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // ← AÑADIDO
 import { useSuperheroes } from "../context/SuperHeroContext";
+import { useAuth } from "../context/AuthContext";
 import Header from "../components/Header";
 
 const SuperheroDetail = () => {
   const { id } = useParams();
-  const { getSuperheroById } = useSuperheroes();
+  const navigate = useNavigate(); // ← AÑADIDO
+  const { getSuperheroById, deleteSuperhero } = useSuperheroes(); // ← deleteSuperhero añadido por si lo usás
+  const { user, token } = useAuth();
   const [superhero, setSuperhero] = useState(null);
 
   useEffect(() => {
     const fetchHero = async () => {
       const data = await getSuperheroById(id);
+      console.log("🦸‍♂️ Superhéroe cargado:", data);
+      console.log("👤 Owner:", data.owner);
       setSuperhero(data);
     };
     fetchHero();
   }, [id, getSuperheroById]);
 
   if (!superhero) return <p className="loading">Cargando superhéroe...</p>;
+
+  const canEdit =
+    user?.role === "admin" || user?.username === superhero.owner?.username;
+
+  const handleEdit = () => {
+    navigate(`/editsuperhero/${superhero._id}`);
+  };
+
+  const handleDelete = async () => {
+    if (window.confirm("¿Estás seguro de que deseas eliminar este superhéroe?")) {
+      await deleteSuperhero(superhero._id, token);
+      navigate("/"); // o donde prefieras redirigir después de borrar
+    }
+  };
 
   return (
     <div className="container-general">
@@ -33,16 +52,21 @@ const SuperheroDetail = () => {
         />
         <div className="superhero-info">
           <h2 className="superhero-name">{superhero.name}</h2>
-          <h4 className="superhero-creador">Alter Ego: {superhero.alterEgo}</h4>
+          <h4 className="superhero-creador">
+            Alter Ego: {superhero.owner?.username || "Desconocido"}
+          </h4>
           <p className="superhero-description">{superhero.description}</p>
-          <p><strong>Poder:</strong> {superhero.power}</p>
-          <p><strong>Ciudad:</strong> {superhero.city}</p>
 
-          <div className="container-superhero-buttons">
-            <button className="superhero__buttons--crear">Crear</button>
-            <button className="superhero__buttons--editar">Editar</button>
-            <button className="superhero__buttons--eliminar">Eliminar</button>
-          </div>
+          {canEdit && (
+            <div className="container-superhero-buttons">
+              <button className="superhero__buttons--editar" onClick={handleEdit}>
+                Editar
+              </button>
+              <button className="superhero__buttons--eliminar" onClick={handleDelete}>
+                Eliminar
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

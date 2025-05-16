@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext"; // Asegúrate de que la ruta sea correcta
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const CreatorsList = () => {
-  const { getAllUsers, users } = useAuth(); // Ya es seguro por el throw en el hook
+  const { getAllUsers, users, deleteUser, user: currentUser } = useAuth();
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
       await getAllUsers();
       setLoading(false);
     };
-
     fetchUsers();
   }, []);
 
-  const nonAdminUsers = users?.filter(user => user.role !== "admin") || [];
+  const nonAdminUsers = users?.filter((user) => user.role !== "admin") || [];
+
+  const handleDelete = async (id) => {
+    const confirm = window.confirm("¿Estás seguro de eliminar este usuario y sus superhéroes?");
+    if (confirm) {
+      await deleteUser(id);
+    }
+  };
+  const handleEdit = (id) => {
+    navigate(`/edituser/${id}`);
+  };
 
   return (
     <div className="creadores container-general">
@@ -32,9 +43,15 @@ const CreatorsList = () => {
                 <div key={creator._id} className="creadores__card">
                   <p className="creadores__info">Email: {creator.username}</p>
                   <div className="creadores__botones">
-                    <button className="creadores__boton--crear" title="Crear">➕</button>
-                    <button className="creadores__boton--editar" title="Editar">✏️</button>
-                    <button className="creadores__boton--eliminar" title="Eliminar">🗑️</button>
+                    {currentUser?.role === "admin" && (
+                      <button
+                        className="creadores__boton--eliminar"
+                        title="Eliminar"
+                        onClick={() => handleDelete(creator._id)}
+                      >
+                        🗑️
+                      </button>
+                    )}
                   </div>
                 </div>
               ))

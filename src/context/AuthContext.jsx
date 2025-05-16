@@ -6,7 +6,10 @@ import API from "../api/axios";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [users, setUsers] = useState([]);
 
@@ -24,18 +27,30 @@ export const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       const response = await API.post("/auth/login", credentials);
-      const { token } = response.data;
+      const { token, user } = response.data;
+
+      console.log("✅ Usuario logueado:", user);
+      console.log("🔐 Token recibido:", token);
+
       setToken(token);
+      setUser(user);
+
       localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user)); // 👈 Guardar user
     } catch (error) {
-      console.error("Error al hacer login:", error);
+      console.error("❌ Error al hacer login:", error);
+      if (error.response) {
+        console.error("🧾 Respuesta del servidor:", error.response.data);
+      }
     }
   };
+
 
   const logout = () => {
     setToken(null);
     setUser(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
   };
 
   const getAllUsers = async () => {
@@ -62,6 +77,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  const deleteUser = async (userId) => {
+    try {
+      await API.delete(`/auth/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      // Actualiza el estado local (opcional)
+      setUsers((prev) => prev.filter((user) => user._id !== userId));
+
+      console.log(`✅ Usuario ${userId} eliminado correctamente`);
+    } catch (error) {
+      console.error(`❌ Error al eliminar el usuario ${userId}:`, error);
+      if (error.response) {
+        console.error("🧾 Respuesta del servidor:", error.response.data);
+      }
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -72,6 +108,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         getAllUsers,
+        deleteUser,
       }}
     >
       {children}
